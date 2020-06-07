@@ -4,7 +4,7 @@
 
 Project #1: Brain games
 
-[![asciinema demo](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)
+[asciinema demo](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)
 
 ##
 

@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-import { getUserAnswer, getUserName } from '../src/cli.js';
+import { getUserAnswer, getUserName } from './cli.js';
 
 function evenLogic() {
   const ANSWERS = {
@@ -8,7 +8,7 @@ function evenLogic() {
     no: 'no',
   };
 
-  const log = console.log;
+  const { log } = console;
   const numberOfTries = 3;
 
   const dotBlue = chalk.blue('.');
