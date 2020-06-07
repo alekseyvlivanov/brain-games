@@ -1,11 +1,17 @@
 import readlineSync from 'readline-sync';
 
-function getUserName() {
-  const name = readlineSync.question('May I have your name? ');
-
-  if (name) {
-    console.log(`Hello, ${name}!`);
-  }
+function getUserAnswer(question) {
+  return readlineSync.question(question).toLowerCase();
 }
 
-export default getUserName;
+function getUserName() {
+  let name;
+
+  while (!name) {
+    name = readlineSync.question('May I have your name? ');
+  }
+
+  return name;
+}
+
+export { getUserAnswer, getUserName };
