@@ -2,7 +2,12 @@
 
 ## Frontend JavaScript
 
-Project #1: Brain games
+### Project #1: Brain games
+
+[![Node CI](https://github.com/alekseyvlivanov/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/alekseyvlivanov/frontend-project-lvl1/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+
+##
 
 [Package install and Brain Even demo](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)
 
@@ -13,8 +18,3 @@ Project #1: Brain games
 [Brain Progression demo](https://asciinema.org/a/pDmelpZEQlIGNZgedN8OXoBFY)
 
 [Brain Prime demo](https://asciinema.org/a/2LmfQpuOOQGRURU4lVS8Ebwjy)
-
-##
-
-[![Node CI](https://github.com/alekseyvlivanov/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/alekseyvlivanov/frontend-project-lvl1/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
