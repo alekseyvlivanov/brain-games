@@ -5,8 +5,12 @@
 Project #1: Brain games
 
 [Package install and Brain Even demo](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)
+
 [Brain Calc demo](https://asciinema.org/a/P0IMAmYrZyxvbV2OnMNw8U6ao)
+
 [Brain GCD demo](https://asciinema.org/a/MtQhCnFlEPwtrfSQBc3kCPfrl)
+
+[Brain Progression demo](https://asciinema.org/a/pDmelpZEQlIGNZgedN8OXoBFY)
 
 ##
 
