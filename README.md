@@ -12,6 +12,8 @@ Project #1: Brain games
 
 [Brain Progression demo](https://asciinema.org/a/pDmelpZEQlIGNZgedN8OXoBFY)
 
+[Brain Prime demo](https://asciinema.org/a/2LmfQpuOOQGRURU4lVS8Ebwjy)
+
 ##
 
 [![Node CI](https://github.com/alekseyvlivanov/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/alekseyvlivanov/frontend-project-lvl1/actions)
