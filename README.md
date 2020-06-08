@@ -4,7 +4,8 @@
 
 Project #1: Brain games
 
-[asciinema demo](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)
+[Package install and Brain Even asciinema demo](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)
+[Brain Calc asciinema demo](https://asciinema.org/a/P0IMAmYrZyxvbV2OnMNw8U6ao)
 
 ##
 

@@ -1,20 +1,21 @@
 import chalk from 'chalk';
 
-import { getUserAnswer, getUserName } from './cli.js';
+import { getUserAnswer, getUserNameAndHello, showWelcome } from '../cli.js';
 
-function evenLogic() {
+function makeEvenGame(numberOfTries) {
   const ANSWERS = {
     yes: 'yes',
     no: 'no',
   };
+  const maxNumber = 100;
 
   const { log } = console;
-  const numberOfTries = 3;
 
   const dotBlue = chalk.blue('.');
   const quotesRed = (text) => chalk.red(`"${text}"`);
 
-  const name = getUserName();
+  showWelcome();
+  const name = getUserNameAndHello();
 
   let answer;
   let correctAnswer;
@@ -22,7 +23,6 @@ function evenLogic() {
   let numberOfCorrectAnswers = 0;
   let numberToCheck;
 
-  log(`Hello, ${name}!`);
   log(
     'Answer',
     chalk.red('"yes"'),
@@ -32,7 +32,7 @@ function evenLogic() {
   );
 
   while (isPlaying) {
-    numberToCheck = Math.floor(Math.random() * 100);
+    numberToCheck = Math.floor(Math.random() * maxNumber);
     correctAnswer = numberToCheck % 2 === 0 ? ANSWERS.yes : ANSWERS.no;
 
     log(`Question: ${numberToCheck}`);
@@ -58,4 +58,4 @@ function evenLogic() {
   }
 }
 
-export default evenLogic;
+export default makeEvenGame;

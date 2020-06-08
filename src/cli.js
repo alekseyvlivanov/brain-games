@@ -14,4 +14,15 @@ function getUserName() {
   return name;
 }
 
-export { getUserAnswer, getUserName };
+function getUserNameAndHello() {
+  const name = getUserName();
+  console.log(`Hello, ${name}!`);
+
+  return name;
+}
+
+function showWelcome() {
+  console.log('Welcome to the Brain Games!');
+}
+
+export { getUserAnswer, getUserName, getUserNameAndHello, showWelcome };

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import evenLogic from '../src/even-logic.js';
+import { makeEvenGame } from '../src/index.js';
 
-console.log('Welcome to the Brain Games!');
+const numberOfTries = 3;
 
-evenLogic();
+makeEvenGame(numberOfTries);
