@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { makeProgressionGame } from '../src/index.js';
+import makeProgressionGame from '../src/games/progression-logic.js';
 
-const numberOfTries = 3;
-
-makeProgressionGame(numberOfTries);
+makeProgressionGame();

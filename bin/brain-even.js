@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { makeEvenGame } from '../src/index.js';
+import makeEvenGame from '../src/games/even-logic.js';
 
-const numberOfTries = 3;
-
-makeEvenGame(numberOfTries);
+makeEvenGame();

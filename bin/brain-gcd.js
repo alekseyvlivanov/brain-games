@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { makeGCDGame } from '../src/index.js';
+import makeGCDGame from '../src/games/gcd-logic.js';
 
-const numberOfTries = 3;
-
-makeGCDGame(numberOfTries);
+makeGCDGame();

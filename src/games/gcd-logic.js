@@ -1,6 +1,9 @@
-import chalk from 'chalk';
-
-import { getUserAnswer, getUserNameAndHello, showWelcome } from '../cli.js';
+import {
+  getUserNameAndHello,
+  showDescription,
+  showWelcome,
+  doPlaying,
+} from '../index.js';
 
 function getGCD(numberOne, numberTwo) {
   let nMax = Math.max(numberOne, numberTwo);
@@ -16,53 +19,35 @@ function getGCD(numberOne, numberTwo) {
   return nMin;
 }
 
-function makeGCDGame(numberOfTries) {
-  const maxNumber = 100;
+function makeGCDGame() {
+  const fnWhatToCheck = () => {
+    const maxNumber = 100;
 
-  const { log } = console;
+    return {
+      numberOne: Math.floor(Math.random() * maxNumber),
+      numberTwo: Math.floor(Math.random() * maxNumber),
+    };
+  };
 
-  const dotBlue = chalk.blue('.');
-  const quotesRed = (text) => chalk.red(`"${text}"`);
+  const fnCorrectAnswer = ({ numberOne, numberTwo }) =>
+    getGCD(numberOne, numberTwo);
+
+  const fnWhatToAsk = ({ numberOne, numberTwo }) => `${numberOne} ${numberTwo}`;
+
+  const fnWhatToDoWithAnswer = (answer) => parseInt(answer, 10);
 
   showWelcome();
   const name = getUserNameAndHello();
 
-  let answer;
-  let correctAnswer;
-  let isPlaying = true;
-  let numberOfCorrectAnswers = 0;
-  let numberOne;
-  let numberTwo;
+  showDescription('Find the greatest common divisor of given numbers.');
 
-  log('Find the greatest common divisor of given numbers.');
-
-  while (isPlaying) {
-    numberOne = Math.floor(Math.random() * maxNumber);
-    numberTwo = Math.floor(Math.random() * maxNumber);
-
-    correctAnswer = getGCD(numberOne, numberTwo);
-
-    log(`Question: ${numberOne} ${numberTwo}`);
-    answer = parseInt(getUserAnswer(`Your answer: `), 10);
-
-    if (answer !== correctAnswer) {
-      log(
-        `${quotesRed(answer)} is wrong answer ${chalk.bold(
-          ';(',
-        )}${dotBlue} Correct answer was ${quotesRed(correctAnswer)}${dotBlue}`,
-      );
-      log(`Let's try again, ${name}!`);
-      isPlaying = false;
-    } else {
-      log('Correct!');
-      numberOfCorrectAnswers += 1;
-      isPlaying = numberOfCorrectAnswers < numberOfTries;
-    }
-  }
-
-  if (numberOfCorrectAnswers >= numberOfTries) {
-    log(`Congratulations, ${name}!`);
-  }
+  doPlaying(
+    name,
+    fnWhatToCheck,
+    fnCorrectAnswer,
+    fnWhatToAsk,
+    fnWhatToDoWithAnswer,
+  );
 }
 
 export default makeGCDGame;

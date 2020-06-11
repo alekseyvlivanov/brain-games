@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { makeCalcGame } from '../src/index.js';
+import makeCalcGame from '../src/games/calc-logic.js';
 
-const numberOfTries = 3;
-
-makeCalcGame(numberOfTries);
+makeCalcGame();

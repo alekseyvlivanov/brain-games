@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import { makePrimeGame } from '../src/index.js';
+import makePrimeGame from '../src/games/prime-logic.js';
 
-const numberOfTries = 3;
-
-makePrimeGame(numberOfTries);
+makePrimeGame();

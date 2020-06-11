@@ -1,63 +1,57 @@
-import chalk from 'chalk';
+import {
+  chalkBold,
+  getUserNameAndHello,
+  showDescription,
+  showWelcome,
+  doPlaying,
+} from '../index.js';
 
-import { getUserAnswer, getUserNameAndHello, showWelcome } from '../cli.js';
+function makeProgressionGame() {
+  const fnWhatToCheck = () => {
+    const maxNumber = 10;
 
-function makeProgressionGame(numberOfTries) {
-  const maxNumber = 10;
+    const numberOne = Math.floor(Math.random() * maxNumber);
+    const numberTwo = Math.floor(Math.random() * maxNumber * 2);
+    const numberThree = Math.floor(Math.random() * maxNumber);
 
-  const { log } = console;
-
-  const dotBlue = chalk.blue('.');
-  const quotesRed = (text) => chalk.red(`"${text}"`);
-
-  showWelcome();
-  const name = getUserNameAndHello();
-
-  let answer;
-  let correctAnswer;
-  let isPlaying = true;
-  let numberOfCorrectAnswers = 0;
-  let numberOne;
-  let numberTwo;
-  let numberThree;
-
-  log(`What number is missing ${chalk.bold('in')} the progression?`);
-
-  const fn = (ele, idx) => ele + idx * numberTwo;
-
-  while (isPlaying) {
-    numberOne = Math.floor(Math.random() * maxNumber);
-    numberTwo = Math.floor(Math.random() * maxNumber * 2);
-    numberThree = Math.floor(Math.random() * maxNumber);
+    const fn = (ele, idx) => ele + idx * numberTwo;
 
     const progression = new Array(maxNumber)
       .fill(numberOne)
       .map((ele, idx) => fn(ele, idx));
 
-    correctAnswer = progression[numberThree];
-    progression[numberThree] = '..';
+    return {
+      numberOne,
+      numberTwo,
+      numberThree,
+      progression,
+    };
+  };
 
-    log(`Question: ${progression.join(' ')}`);
-    answer = parseInt(getUserAnswer(`Your answer: `), 10);
+  const fnCorrectAnswer = ({ numberThree, progression }) =>
+    progression[numberThree];
 
-    if (answer !== correctAnswer) {
-      log(
-        `${quotesRed(answer)} is wrong answer ${chalk.bold(
-          ';(',
-        )}${dotBlue} Correct answer was ${quotesRed(correctAnswer)}${dotBlue}`,
-      );
-      log(`Let's try again, ${name}!`);
-      isPlaying = false;
-    } else {
-      log('Correct!');
-      numberOfCorrectAnswers += 1;
-      isPlaying = numberOfCorrectAnswers < numberOfTries;
-    }
-  }
+  const fnWhatToAsk = ({ numberThree, progression }) => {
+    const myProgression = [...progression];
+    myProgression[numberThree] = '..';
 
-  if (numberOfCorrectAnswers >= numberOfTries) {
-    log(`Congratulations, ${name}!`);
-  }
+    return myProgression.join(' ');
+  };
+
+  const fnWhatToDoWithAnswer = (answer) => parseInt(answer, 10);
+
+  showWelcome();
+  const name = getUserNameAndHello();
+
+  showDescription(`What number is missing ${chalkBold('in')} the progression?`);
+
+  doPlaying(
+    name,
+    fnWhatToCheck,
+    fnCorrectAnswer,
+    fnWhatToAsk,
+    fnWhatToDoWithAnswer,
+  );
 }
 
 export default makeProgressionGame;
