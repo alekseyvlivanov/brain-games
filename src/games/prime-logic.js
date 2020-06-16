@@ -1,13 +1,16 @@
+import doPlaying from '../index.js';
+
 import {
+  YESNO,
+  dotBlue,
   chalkBold,
   quotesRed,
-  dotBlue,
-  YESNO,
-  getUserNameAndHello,
-  showDescription,
-  showWelcome,
-  doPlaying,
-} from '../index.js';
+  randomFromTo,
+} from '../utils.js';
+
+const gameDescription = `Answer ${quotesRed('yes')} ${chalkBold(
+  'if',
+)} given number is prime. Otherwise answer ${quotesRed('no')}${dotBlue}`;
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
@@ -18,26 +21,18 @@ const isPrime = (num) => {
   return num > 1;
 };
 
-function makePrimeGame() {
-  const fnWhatToCheck = () => {
+const runPrimeGame = () => {
+  const generateGameData = () => {
     const maxNumber = 100;
 
-    return Math.floor(Math.random() * maxNumber);
+    const gameQuestion = randomFromTo(0, maxNumber);
+
+    const gameAnswer = isPrime(gameQuestion) ? YESNO.yes : YESNO.no;
+
+    return { gameQuestion, gameAnswer };
   };
 
-  const fnCorrectAnswer = (whatToCheck) =>
-    isPrime(whatToCheck) ? YESNO.yes : YESNO.no;
+  doPlaying(gameDescription, generateGameData);
+};
 
-  showWelcome();
-  const name = getUserNameAndHello();
-
-  showDescription(
-    `Answer ${quotesRed('yes')} ${chalkBold(
-      'if',
-    )} given number is prime. Otherwise answer ${quotesRed('no')}${dotBlue}`,
-  );
-
-  doPlaying(name, fnWhatToCheck, fnCorrectAnswer);
-}
-
-export default makePrimeGame;
+export default runPrimeGame;

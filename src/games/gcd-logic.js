@@ -1,11 +1,10 @@
-import {
-  getUserNameAndHello,
-  showDescription,
-  showWelcome,
-  doPlaying,
-} from '../index.js';
+import doPlaying from '../index.js';
 
-function getGCD(numberOne, numberTwo) {
+import { randomFromTo } from '../utils.js';
+
+const gameDescription = 'Find the greatest common divisor of given numbers.';
+
+const getGCD = (numberOne, numberTwo) => {
   let nMax = Math.max(numberOne, numberTwo);
   let nMin = Math.min(numberOne, numberTwo);
   let remainder = nMax % nMin;
@@ -17,37 +16,25 @@ function getGCD(numberOne, numberTwo) {
   }
 
   return nMin;
-}
+};
 
-function makeGCDGame() {
-  const fnWhatToCheck = () => {
+const runGCDGame = () => {
+  const generateGameData = () => {
     const maxNumber = 100;
 
-    return {
-      numberOne: Math.floor(Math.random() * maxNumber),
-      numberTwo: Math.floor(Math.random() * maxNumber),
-    };
+    const numberOne = randomFromTo(0, maxNumber);
+    const numberTwo = randomFromTo(0, maxNumber);
+
+    const gameQuestion = `${numberOne} ${numberTwo}`;
+
+    const gameAnswer = getGCD(numberOne, numberTwo);
+
+    const handleAnswer = (answer) => parseInt(answer, 10);
+
+    return { gameQuestion, gameAnswer, handleAnswer };
   };
 
-  const fnCorrectAnswer = ({ numberOne, numberTwo }) =>
-    getGCD(numberOne, numberTwo);
+  doPlaying(gameDescription, generateGameData);
+};
 
-  const fnWhatToAsk = ({ numberOne, numberTwo }) => `${numberOne} ${numberTwo}`;
-
-  const fnWhatToDoWithAnswer = (answer) => parseInt(answer, 10);
-
-  showWelcome();
-  const name = getUserNameAndHello();
-
-  showDescription('Find the greatest common divisor of given numbers.');
-
-  doPlaying(
-    name,
-    fnWhatToCheck,
-    fnCorrectAnswer,
-    fnWhatToAsk,
-    fnWhatToDoWithAnswer,
-  );
-}
-
-export default makeGCDGame;
+export default runGCDGame;

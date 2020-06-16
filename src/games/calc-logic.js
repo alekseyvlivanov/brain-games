@@ -1,50 +1,34 @@
-import {
-  getUserNameAndHello,
-  showDescription,
-  showWelcome,
-  doPlaying,
-} from '../index.js';
+import doPlaying from '../index.js';
 
-function makeEvenGame() {
-  const fnWhatToCheck = () => {
+import { randomFromTo } from '../utils.js';
+
+const gameDescription = 'What is the result of the expression?';
+
+const runCalcGame = () => {
+  const generateGameData = () => {
     const maxNumber = 100;
     const OPERATORS = {
       plus: { char: '+', fn: (a, b) => a + b },
       minus: { char: '-', fn: (a, b) => a - b },
       times: { char: '*', fn: (a, b) => a * b },
     };
-    const numberOfOperators = Object.keys(OPERATORS).length;
+    const numberOfOperators = Object.keys(OPERATORS).length - 1;
 
-    return {
-      numberOne: Math.floor(Math.random() * maxNumber),
-      numberTwo: Math.floor(Math.random() * maxNumber),
-      operator:
-        OPERATORS[
-          Object.keys(OPERATORS)[Math.floor(Math.random() * numberOfOperators)]
-        ],
-    };
+    const numberOne = randomFromTo(0, maxNumber);
+    const numberTwo = randomFromTo(0, maxNumber);
+    const operator =
+      OPERATORS[Object.keys(OPERATORS)[randomFromTo(0, numberOfOperators)]];
+
+    const gameQuestion = `${numberOne} ${operator.char} ${numberTwo}`;
+
+    const gameAnswer = operator.fn(numberOne, numberTwo);
+
+    const handleAnswer = (answer) => parseInt(answer, 10);
+
+    return { gameQuestion, gameAnswer, handleAnswer };
   };
 
-  const fnCorrectAnswer = ({ numberOne, numberTwo, operator }) =>
-    operator.fn(numberOne, numberTwo);
+  doPlaying(gameDescription, generateGameData);
+};
 
-  const fnWhatToAsk = ({ numberOne, numberTwo, operator }) =>
-    `${numberOne} ${operator.char} ${numberTwo}`;
-
-  const fnWhatToDoWithAnswer = (answer) => parseInt(answer, 10);
-
-  showWelcome();
-  const name = getUserNameAndHello();
-
-  showDescription('What is the result of the expression?');
-
-  doPlaying(
-    name,
-    fnWhatToCheck,
-    fnCorrectAnswer,
-    fnWhatToAsk,
-    fnWhatToDoWithAnswer,
-  );
-}
-
-export default makeEvenGame;
+export default runCalcGame;

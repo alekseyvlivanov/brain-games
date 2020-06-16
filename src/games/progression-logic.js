@@ -1,18 +1,18 @@
-import {
-  chalkBold,
-  getUserNameAndHello,
-  showDescription,
-  showWelcome,
-  doPlaying,
-} from '../index.js';
+import doPlaying from '../index.js';
 
-function makeProgressionGame() {
-  const fnWhatToCheck = () => {
+import { chalkBold, randomFromTo } from '../utils.js';
+
+const gameDescription = `What number is missing ${chalkBold(
+  'in',
+)} the progression?`;
+
+const runProgressionGame = () => {
+  const generateGameData = () => {
     const maxNumber = 10;
 
-    const numberOne = Math.floor(Math.random() * maxNumber);
-    const numberTwo = Math.floor(Math.random() * maxNumber * 2);
-    const numberThree = Math.floor(Math.random() * maxNumber);
+    const numberOne = randomFromTo(0, maxNumber);
+    const numberTwo = randomFromTo(0, maxNumber * 2);
+    const numberThree = randomFromTo(0, maxNumber);
 
     const fn = (ele, idx) => ele + idx * numberTwo;
 
@@ -20,38 +20,17 @@ function makeProgressionGame() {
       .fill(numberOne)
       .map((ele, idx) => fn(ele, idx));
 
-    return {
-      numberOne,
-      numberTwo,
-      numberThree,
-      progression,
-    };
+    const gameAnswer = progression[numberThree];
+    progression[numberThree] = '..';
+
+    const gameQuestion = progression.join(' ');
+
+    const handleAnswer = (answer) => parseInt(answer, 10);
+
+    return { gameQuestion, gameAnswer, handleAnswer };
   };
 
-  const fnCorrectAnswer = ({ numberThree, progression }) =>
-    progression[numberThree];
+  doPlaying(gameDescription, generateGameData);
+};
 
-  const fnWhatToAsk = ({ numberThree, progression }) => {
-    const myProgression = [...progression];
-    myProgression[numberThree] = '..';
-
-    return myProgression.join(' ');
-  };
-
-  const fnWhatToDoWithAnswer = (answer) => parseInt(answer, 10);
-
-  showWelcome();
-  const name = getUserNameAndHello();
-
-  showDescription(`What number is missing ${chalkBold('in')} the progression?`);
-
-  doPlaying(
-    name,
-    fnWhatToCheck,
-    fnCorrectAnswer,
-    fnWhatToAsk,
-    fnWhatToDoWithAnswer,
-  );
-}
-
-export default makeProgressionGame;
+export default runProgressionGame;

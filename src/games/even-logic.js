@@ -1,34 +1,29 @@
+import doPlaying from '../index.js';
+
 import {
+  YESNO,
+  dotBlue,
   chalkBold,
   quotesRed,
-  dotBlue,
-  YESNO,
-  getUserNameAndHello,
-  showDescription,
-  showWelcome,
-  doPlaying,
-} from '../index.js';
+  randomFromTo,
+} from '../utils.js';
 
-function makeEvenGame() {
-  const fnWhatToCheck = () => {
+const gameDescription = `Answer ${quotesRed('yes')} ${chalkBold(
+  'if',
+)} the number is even, otherwise answer ${quotesRed('no')}${dotBlue}`;
+
+const runEvenGame = () => {
+  const generateGameData = () => {
     const maxNumber = 100;
 
-    return Math.floor(Math.random() * maxNumber);
+    const gameQuestion = randomFromTo(0, maxNumber);
+
+    const gameAnswer = gameQuestion % 2 === 0 ? YESNO.yes : YESNO.no;
+
+    return { gameQuestion, gameAnswer };
   };
 
-  const fnCorrectAnswer = (whatToCheck) =>
-    whatToCheck % 2 === 0 ? YESNO.yes : YESNO.no;
+  doPlaying(gameDescription, generateGameData);
+};
 
-  showWelcome();
-  const name = getUserNameAndHello();
-
-  showDescription(
-    `Answer ${quotesRed('yes')} ${chalkBold(
-      'if',
-    )} the number is even, otherwise answer ${quotesRed('no')}${dotBlue}`,
-  );
-
-  doPlaying(name, fnWhatToCheck, fnCorrectAnswer);
-}
-
-export default makeEvenGame;
+export default runEvenGame;
