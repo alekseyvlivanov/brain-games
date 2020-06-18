@@ -1,17 +1,9 @@
 import chalk from 'chalk';
 
-const YESNO = {
-  yes: 'yes',
-  no: 'no',
+const makeRed = (text) => chalk.red(`"${text}"`);
+
+const randomMinMax = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const dotBlue = chalk.blue('.');
-
-const chalkBold = (text) => chalk.bold(text);
-const quotesRed = (text) => chalk.red(`"${text}"`);
-
-const randomFromTo = (from, to) => {
-  return Math.floor(Math.random() * (to - from + 1)) + from;
-};
-
-export { YESNO, dotBlue, chalkBold, quotesRed, randomFromTo };
+export { makeRed, randomMinMax };

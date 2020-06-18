@@ -1,16 +1,9 @@
-import doPlaying from '../index.js';
+import runGame from '../index.js';
 
-import {
-  YESNO,
-  dotBlue,
-  chalkBold,
-  quotesRed,
-  randomFromTo,
-} from '../utils.js';
+import { randomMinMax } from '../utils.js';
 
-const gameDescription = `Answer ${quotesRed('yes')} ${chalkBold(
-  'if',
-)} given number is prime. Otherwise answer ${quotesRed('no')}${dotBlue}`;
+const gameDescription =
+  'Answer "yes" if the given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   for (let i = 2; i < num; i += 1) {
@@ -21,18 +14,16 @@ const isPrime = (num) => {
   return num > 1;
 };
 
+const generateGameData = () => {
+  const question = randomMinMax(0, 100);
+
+  const answer = isPrime(question) ? 'yes' : 'no';
+
+  return { question, answer };
+};
+
 const runPrimeGame = () => {
-  const generateGameData = () => {
-    const maxNumber = 100;
-
-    const gameQuestion = randomFromTo(0, maxNumber);
-
-    const gameAnswer = isPrime(gameQuestion) ? YESNO.yes : YESNO.no;
-
-    return { gameQuestion, gameAnswer };
-  };
-
-  doPlaying(gameDescription, generateGameData);
+  runGame(gameDescription, generateGameData);
 };
 
 export default runPrimeGame;

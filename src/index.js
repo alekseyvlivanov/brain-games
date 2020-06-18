@@ -1,6 +1,8 @@
 import readlineSync from 'readline-sync';
 
-import { dotBlue, chalkBold, quotesRed } from './utils.js';
+import { makeRed } from './utils.js';
+
+const numberOfAttempts = 3;
 
 const getUserName = () => {
   let name;
@@ -12,9 +14,7 @@ const getUserName = () => {
   return name;
 };
 
-const doPlaying = (gameDescription, generateGameData) => {
-  const numberOfAttempts = 3;
-
+const runGame = (gameDescription, generateGameData) => {
   console.log('Welcome to the Brain Games!');
 
   const name = getUserName();
@@ -23,25 +23,17 @@ const doPlaying = (gameDescription, generateGameData) => {
   console.log(gameDescription);
 
   for (let attempt = 1; attempt <= numberOfAttempts; attempt += 1) {
-    const {
-      gameQuestion,
-      gameAnswer,
-      handleAnswer = null,
-    } = generateGameData();
+    const { question, answer } = generateGameData();
 
-    console.log(`Question: ${gameQuestion}`);
+    console.log(`Question: ${question}`);
 
-    let answer = readlineSync.question(`Your answer: `).toLowerCase();
+    const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
 
-    if (handleAnswer) {
-      answer = handleAnswer(answer);
-    }
-
-    if (answer !== gameAnswer) {
+    if (userAnswer !== answer) {
       console.log(
-        `${quotesRed(answer)} is wrong answer ${chalkBold(
-          ';(',
-        )}${dotBlue} Correct answer was ${quotesRed(gameAnswer)}${dotBlue}`,
+        `${makeRed(
+          userAnswer,
+        )} is wrong answer ;(. Correct answer was ${makeRed(answer)}.`,
       );
       console.log(`Let's try again, ${name}!`);
 
@@ -54,4 +46,4 @@ const doPlaying = (gameDescription, generateGameData) => {
   console.log(`Congratulations, ${name}!`);
 };
 
-export default doPlaying;
+export default runGame;

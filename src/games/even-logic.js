@@ -1,29 +1,22 @@
-import doPlaying from '../index.js';
+import runGame from '../index.js';
 
-import {
-  YESNO,
-  dotBlue,
-  chalkBold,
-  quotesRed,
-  randomFromTo,
-} from '../utils.js';
+import { randomMinMax } from '../utils.js';
 
-const gameDescription = `Answer ${quotesRed('yes')} ${chalkBold(
-  'if',
-)} the number is even, otherwise answer ${quotesRed('no')}${dotBlue}`;
+const gameDescription =
+  'Answer "yes" if the number is even, otherwise answer "no".';
+
+const isEven = (num) => num % 2 === 0;
+
+const generateGameData = () => {
+  const question = randomMinMax(0, 100);
+
+  const answer = isEven(question) ? 'yes' : 'no';
+
+  return { question, answer };
+};
 
 const runEvenGame = () => {
-  const generateGameData = () => {
-    const maxNumber = 100;
-
-    const gameQuestion = randomFromTo(0, maxNumber);
-
-    const gameAnswer = gameQuestion % 2 === 0 ? YESNO.yes : YESNO.no;
-
-    return { gameQuestion, gameAnswer };
-  };
-
-  doPlaying(gameDescription, generateGameData);
+  runGame(gameDescription, generateGameData);
 };
 
 export default runEvenGame;

@@ -27,7 +27,7 @@
   "type": "module",
   "homepage": "https://github.com/alekseyvlivanov/frontend-project-lvl1#readme",
   "dependencies": {
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
