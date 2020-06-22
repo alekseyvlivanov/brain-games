@@ -1,6 +1,6 @@
 import runGame from '../index.js';
 
-import { randomMinMax } from '../utils.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameDescription =
   'Answer "yes" if the given number is prime. Otherwise answer "no".';
@@ -15,7 +15,7 @@ const isPrime = (num) => {
 };
 
 const generateGameData = () => {
-  const question = randomMinMax(0, 100);
+  const question = getRandomNumber(1, 100).toString();
 
   const answer = isPrime(question) ? 'yes' : 'no';
 

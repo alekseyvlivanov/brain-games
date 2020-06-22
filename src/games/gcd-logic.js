@@ -1,28 +1,27 @@
 import runGame from '../index.js';
 
-import { randomMinMax } from '../utils.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
+const maxNumber = 100;
 
-const getGCD = (numberOne, numberTwo) => {
-  let nMax = Math.max(numberOne, numberTwo);
-  let nMin = Math.min(numberOne, numberTwo);
-  let remainder = nMax % nMin;
+const getGCD = (x, y) => {
+  let firstNumber = Math.abs(x);
+  let secondNumber = Math.abs(y);
+  let tempNumber;
 
-  while (remainder > 0) {
-    nMax = nMin;
-    nMin = remainder;
-    remainder = nMax % nMin;
+  while (secondNumber) {
+    tempNumber = secondNumber;
+    secondNumber = x % secondNumber;
+    firstNumber = tempNumber;
   }
 
-  return nMin;
+  return firstNumber;
 };
 
 const generateGameData = () => {
-  const maxNumber = 100;
-
-  const numberOne = randomMinMax(0, maxNumber);
-  const numberTwo = randomMinMax(0, maxNumber);
+  const numberOne = getRandomNumber(1, maxNumber);
+  const numberTwo = getRandomNumber(1, maxNumber);
 
   const question = `${numberOne} ${numberTwo}`;
 

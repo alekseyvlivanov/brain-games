@@ -1,7 +1,14 @@
 {
   "name": "frontend-project-lvl1",
-  "version": "1.0.3",
-  "description": "Brain Games",
+  "version": "1.0.4",
+  "description": "Brain Games - a set of five simple math console games",
+  "keywords": [
+    "brain",
+    "math",
+    "console",
+    "games",
+    "hexlet"
+  ],
   "bin": {
     "brain-calc": "bin/brain-calc.js",
     "brain-even": "bin/brain-even.js",
@@ -31,11 +38,11 @@
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint": "^7.3.0",
+    "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5"
   }
 }

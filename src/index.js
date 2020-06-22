@@ -4,20 +4,12 @@ import { makeRed } from './utils.js';
 
 const numberOfAttempts = 3;
 
-const getUserName = () => {
-  let name;
-
-  while (!name) {
-    name = readlineSync.question('May I have your name? ');
-  }
-
-  return name;
-};
-
 const runGame = (gameDescription, generateGameData) => {
   console.log('Welcome to the Brain Games!');
 
-  const name = getUserName();
+  const name = readlineSync.question('May I have your name? ', {
+    defaultInput: 'Guest',
+  });
   console.log(`Hello, ${name}!`);
 
   console.log(gameDescription);
@@ -32,8 +24,8 @@ const runGame = (gameDescription, generateGameData) => {
     if (userAnswer !== answer) {
       console.log(
         `${makeRed(
-          userAnswer,
-        )} is wrong answer ;(. Correct answer was ${makeRed(answer)}.`,
+          `"${userAnswer}"`,
+        )} is wrong answer ;(. Correct answer was ${makeRed(`"${answer}"`)}.`,
       );
       console.log(`Let's try again, ${name}!`);
 

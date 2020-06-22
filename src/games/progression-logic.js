@@ -1,24 +1,29 @@
 import runGame from '../index.js';
 
-import { randomMinMax } from '../utils.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameDescription = 'What number is missing in the progression?';
+const numberOfTerms = 10;
+
+const generateArithmeticProgression = (number, first, difference) => {
+  return new Array(number)
+    .fill(first)
+    .map((element, idx) => element + idx * difference);
+};
 
 const generateGameData = () => {
-  const maxNumber = 10;
+  const firstTerm = getRandomNumber(1, 20);
+  const differenceBetweenTerms = getRandomNumber(1, 30);
+  const hiddenTerm = getRandomNumber(0, numberOfTerms - 1);
 
-  const numberOne = randomMinMax(0, maxNumber);
-  const numberTwo = randomMinMax(0, maxNumber * 2);
-  const numberThree = randomMinMax(0, maxNumber);
+  const progression = generateArithmeticProgression(
+    numberOfTerms,
+    firstTerm,
+    differenceBetweenTerms,
+  );
 
-  const fn = (ele, idx) => ele + idx * numberTwo;
-
-  const progression = new Array(maxNumber)
-    .fill(numberOne)
-    .map((ele, idx) => fn(ele, idx));
-
-  const answer = progression[numberThree].toString();
-  progression[numberThree] = '..';
+  const answer = progression[hiddenTerm].toString();
+  progression[hiddenTerm] = '..';
 
   const question = progression.join(' ');
 

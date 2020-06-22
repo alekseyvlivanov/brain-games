@@ -1,26 +1,25 @@
 import runGame from '../index.js';
 
-import { randomMinMax } from '../utils.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameDescription = 'What is the result of the expression?';
+const maxNumber = 100;
+
+const gameOperations = {
+  '+': (a, b) => a + b,
+  '-': (a, b) => a - b,
+  '*': (a, b) => a * b,
+};
+const operators = Object.keys(gameOperations);
 
 const generateGameData = () => {
-  const maxNumber = 100;
-  const OPERATORS = {
-    plus: { char: '+', fn: (a, b) => a + b },
-    minus: { char: '-', fn: (a, b) => a - b },
-    times: { char: '*', fn: (a, b) => a * b },
-  };
-  const numberOfOperators = Object.keys(OPERATORS).length - 1;
+  const numberOne = getRandomNumber(1, maxNumber);
+  const numberTwo = getRandomNumber(1, maxNumber);
+  const operator = operators[getRandomNumber(0, operators.length - 1)];
 
-  const numberOne = randomMinMax(0, maxNumber);
-  const numberTwo = randomMinMax(0, maxNumber);
-  const operator =
-    OPERATORS[Object.keys(OPERATORS)[randomMinMax(0, numberOfOperators)]];
+  const question = `${numberOne} ${operator} ${numberTwo}`;
 
-  const question = `${numberOne} ${operator.char} ${numberTwo}`;
-
-  const answer = operator.fn(numberOne, numberTwo).toString();
+  const answer = gameOperations[operator](numberOne, numberTwo).toString();
 
   return { question, answer };
 };

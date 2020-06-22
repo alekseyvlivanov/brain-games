@@ -1,6 +1,6 @@
 import runGame from '../index.js';
 
-import { randomMinMax } from '../utils.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameDescription =
   'Answer "yes" if the number is even, otherwise answer "no".';
@@ -8,7 +8,7 @@ const gameDescription =
 const isEven = (num) => num % 2 === 0;
 
 const generateGameData = () => {
-  const question = randomMinMax(0, 100);
+  const question = getRandomNumber(1, 100).toString();
 
   const answer = isEven(question) ? 'yes' : 'no';
 
