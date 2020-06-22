@@ -9,12 +9,12 @@
 
 ##
 
-[Package install and Brain Even demo](https://asciinema.org/a/L1C8f6ZFdU7p4ZVLu7GLD9Pux)
+[![Package install and Brain Even demo](https://asciinema.org/a/D5QGjE8teZWvCHscRBg0Cig9J.svg)](https://asciinema.org/a/D5QGjE8teZWvCHscRBg0Cig9J)
 
-[Brain Calc demo](https://asciinema.org/a/P0IMAmYrZyxvbV2OnMNw8U6ao)
+[![Brain Calc demo](https://asciinema.org/a/U76XJox0zwUfjil4ygXc3L4oV.svg)](https://asciinema.org/a/U76XJox0zwUfjil4ygXc3L4oV)
 
-[Brain GCD demo](https://asciinema.org/a/MtQhCnFlEPwtrfSQBc3kCPfrl)
+[![Brain GCD demo](https://asciinema.org/a/SlNg9zwdbHhzPcKT5HpF071qV.svg)](https://asciinema.org/a/SlNg9zwdbHhzPcKT5HpF071qV)
 
-[Brain Progression demo](https://asciinema.org/a/pDmelpZEQlIGNZgedN8OXoBFY)
+[![Brain Progression demo](https://asciinema.org/a/Z7TkJHYG4O6qW9K3lAcPzu6kD.svg)](https://asciinema.org/a/Z7TkJHYG4O6qW9K3lAcPzu6kD)
 
-[Brain Prime demo](https://asciinema.org/a/2LmfQpuOOQGRURU4lVS8Ebwjy)
+[![Brain Prime demo](https://asciinema.org/a/BuTiseBhz5f34rg2SXfiFbSKe.svg)](https://asciinema.org/a/BuTiseBhz5f34rg2SXfiFbSKe)
