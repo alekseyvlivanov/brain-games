@@ -6,17 +6,20 @@ const gameDescription = 'Find the greatest common divisor of given numbers.';
 const maxNumber = 100;
 
 const getGCD = (x, y) => {
-  let firstNumber = Math.abs(x);
-  let secondNumber = Math.abs(y);
-  let tempNumber;
+  let max = Math.max(Math.abs(x), Math.abs(y));
+  let min = Math.min(Math.abs(x), Math.abs(y));
 
-  while (secondNumber) {
-    tempNumber = secondNumber;
-    secondNumber = x % secondNumber;
-    firstNumber = tempNumber;
+  if (min === 0) return max;
+
+  let remainder = max % min;
+
+  while (remainder) {
+    max = min;
+    min = remainder;
+    remainder = max % min;
   }
 
-  return firstNumber;
+  return min;
 };
 
 const generateGameData = () => {
