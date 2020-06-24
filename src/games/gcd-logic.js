@@ -5,22 +5,7 @@ import { getRandomNumber } from '../utils.js';
 const gameDescription = 'Find the greatest common divisor of given numbers.';
 const maxNumber = 100;
 
-const getGCD = (x, y) => {
-  let max = Math.max(Math.abs(x), Math.abs(y));
-  let min = Math.min(Math.abs(x), Math.abs(y));
-
-  if (min === 0) return max;
-
-  let remainder = max % min;
-
-  while (remainder) {
-    max = min;
-    min = remainder;
-    remainder = max % min;
-  }
-
-  return min;
-};
+const getGCD = (x, y) => Math.abs(y !== 0 ? getGCD(y, x % y) : x);
 
 const generateGameData = () => {
   const numberOne = getRandomNumber(1, maxNumber);
