@@ -5,16 +5,20 @@ import { getRandomNumber } from '../utils.js';
 const gameDescription = 'What number is missing in the progression?';
 const numberOfTerms = 10;
 
-const generateArithmeticProgression = (number, first, difference) => {
-  return new Array(number)
-    .fill(first)
-    .map((element, idx) => element + idx * difference);
+const generateArithmeticProgression = (
+  numberOfElements,
+  firstElement,
+  differenceBetweenElements,
+) => {
+  return new Array(numberOfElements)
+    .fill(firstElement)
+    .map((element, idx) => element + idx * differenceBetweenElements);
 };
 
 const generateGameData = () => {
   const firstTerm = getRandomNumber(1, 20);
   const differenceBetweenTerms = getRandomNumber(1, 30);
-  const hiddenTerm = getRandomNumber(0, numberOfTerms - 1);
+  const indexOfHiddenTerm = getRandomNumber(0, numberOfTerms - 1);
 
   const progression = generateArithmeticProgression(
     numberOfTerms,
@@ -22,8 +26,8 @@ const generateGameData = () => {
     differenceBetweenTerms,
   );
 
-  const answer = progression[hiddenTerm].toString();
-  progression[hiddenTerm] = '..';
+  const answer = progression[indexOfHiddenTerm].toString();
+  progression[indexOfHiddenTerm] = '..';
 
   const question = progression.join(' ');
 

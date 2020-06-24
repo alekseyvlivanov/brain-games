@@ -8,9 +8,10 @@ const gameDescription =
 const isEven = (num) => num % 2 === 0;
 
 const generateGameData = () => {
-  const question = getRandomNumber(1, 100).toString();
+  const randomNumber = getRandomNumber(1, 100);
 
-  const answer = isEven(question) ? 'yes' : 'no';
+  const answer = isEven(randomNumber) ? 'yes' : 'no';
+  const question = `${randomNumber}`;
 
   return { question, answer };
 };
