@@ -18,7 +18,7 @@ const generateGameData = () => {
   const randomNumber = getRandomNumber(1, 100);
 
   const answer = isPrime(randomNumber) ? 'yes' : 'no';
-  const question = `${randomNumber}`;
+  const question = randomNumber.toString();
 
   return { question, answer };
 };
