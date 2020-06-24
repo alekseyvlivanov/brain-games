@@ -3,25 +3,21 @@ import runGame from '../index.js';
 import { getRandomNumber } from '../utils.js';
 
 const gameDescription = 'What number is missing in the progression?';
-const numberOfTerms = 10;
+const lengthOfProgression = 10;
 
-const generateArithmeticProgression = (
-  numberOfElements,
-  firstElement,
-  differenceBetweenElements,
-) => {
-  return new Array(numberOfElements)
-    .fill(firstElement)
-    .map((element, idx) => element + idx * differenceBetweenElements);
+const generateArithmeticProgression = (length, first, difference) => {
+  return new Array(length)
+    .fill(first)
+    .map((element, idx) => element + idx * difference);
 };
 
 const generateGameData = () => {
   const firstTerm = getRandomNumber(1, 20);
   const differenceBetweenTerms = getRandomNumber(1, 30);
-  const indexOfHiddenTerm = getRandomNumber(0, numberOfTerms - 1);
+  const indexOfHiddenTerm = getRandomNumber(0, lengthOfProgression - 1);
 
   const progression = generateArithmeticProgression(
-    numberOfTerms,
+    lengthOfProgression,
     firstTerm,
     differenceBetweenTerms,
   );
