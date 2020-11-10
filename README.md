@@ -4,8 +4,8 @@
 
 ### Project #1: Brain games
 
-[![Node CI](https://github.com/alekseyvlivanov/frontend-project-lvl1/workflows/Node%20CI/badge.svg)](https://github.com/alekseyvlivanov/frontend-project-lvl1/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f936996de77532e0e092/maintainability)](https://codeclimate.com/github/alekseyvlivanov/frontend-project-lvl1/maintainability)
+[![Node CI](https://github.com/alekseyvlivanov/brain-games/workflows/Node%20CI/badge.svg)](https://github.com/alekseyvlivanov/brain-games/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6b9a2b800de74e822b86/maintainability)](https://codeclimate.com/github/alekseyvlivanov/brain-games/maintainability)
 
 ##
 

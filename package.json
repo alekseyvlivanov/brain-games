@@ -1,5 +1,5 @@
 {
-  "name": "frontend-project-lvl1",
+  "name": "brain-games",
   "version": "1.0.4",
   "description": "Brain Games - a set of five simple math console games",
   "keywords": [
@@ -24,15 +24,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alekseyvlivanov/frontend-project-lvl1.git"
+    "url": "git+https://github.com/alekseyvlivanov/brain-games.git"
   },
   "author": "Aleksey Ivanov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alekseyvlivanov/frontend-project-lvl1/issues"
+    "url": "https://github.com/alekseyvlivanov/brain-games/issues"
   },
   "type": "module",
-  "homepage": "https://github.com/alekseyvlivanov/frontend-project-lvl1#readme",
+  "homepage": "https://github.com/alekseyvlivanov/brain-games#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "readline-sync": "^1.4.10"
